@@ -1,1 +1,2 @@
-import BootstrapVue from 'bootstrap-vue';
+import { Modal } from 'bootstrap-vue/es/components';
+import { mapActions } from 'vuex';
