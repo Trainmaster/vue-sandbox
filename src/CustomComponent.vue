@@ -5,5 +5,10 @@
 <script>
   export default {
     name: 'custom-component',
+    methods: {
+      helloWorld() {
+        console.log('Hello World');
+      }
+    }
   };
 </script>

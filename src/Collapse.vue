@@ -1,7 +1,6 @@
 <template>
     <div>
-        <b-collapse id="collapse"></b-collapse>
-        <custom-component></custom-component>
+        <custom-component ref="customComponent"></custom-component>
     </div>
 </template>
 <script>
@@ -10,6 +9,11 @@
   export default {
     components: {
       CustomComponent
+    },
+    methods: {
+      doSomething() {
+        this.$refs.customComponent.helloWorld();
+      }
     }
   };
 </script>

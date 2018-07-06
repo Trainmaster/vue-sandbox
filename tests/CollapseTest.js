@@ -10,14 +10,28 @@ describe('Collapse', () => {
   beforeEach(() => {
     const localVue = createLocalVue();
     localVue.use(BootstrapVue);
-    localVue.use(Vuex);
 
-    collapseWrapper = shallowMount(Collapse, { localVue, });
+    const customComponentMock = {
+      render: () => {},
+      methods: {
+        helloWorld: jasmine.createSpy().and.callFake(() => console.log('Spy was called.'))
+      }
+    };
+
+    const options = {
+      localVue,
+      stubs: {
+        'custom-component': customComponentMock
+      }
+    };
+
+    collapseWrapper = shallowMount(Collapse, options);
   });
 
   describe('test', () => {
-    it('should do something', () => {
-      console.log(collapseWrapper.html());
+    it('should call helloWorld()', () => {
+      collapseWrapper.vm.doSomething();
+      expect(collapseWrapper.vm.$refs.customComponent.helloWorld).toHaveBeenCalled();
     });
   });
 });
